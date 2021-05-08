@@ -1,0 +1,8 @@
+ cout <<"t的类型是："<<typeid(t).name()<<endl;//查看类型的具体名称；
+operator函数的重载；
+max_sise容器的容量
+cin>>;重建盘输入；
+cin.get(str,size);读取一行时，只能将字符串读入C风格的字符串中
+cin.getline与cin.get的区别是，cin.getline不会将结束符或者换行符残留在输入缓冲区中
+max_element最大元素的位置；
+min_element最小元素的位置
