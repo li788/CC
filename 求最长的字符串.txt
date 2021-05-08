@@ -1,0 +1,65 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<iostream>
+#include<vector>//包含容器的头文件
+#include<algorithm>//包含算法的头文件；
+using namespace std;
+#include <list>
+#include<time.h>
+#include<set>
+#include<string>
+//求最大重符字符串的个数
+vector<int> test02(string&str)//把所有的连续不同字符串总个数，记录为一个容器；
+{
+	int cout=1;
+	int len = str.length();
+	vector<int>m2;
+	int i;
+	for (i = 0; i<len; i++)
+	{
+		
+		if (str[i] != str[i + 1])
+		{
+			cout ++;
+		}
+		else 
+		{
+			m2.push_back(cout);
+			cout = 1;
+		}
+		if (i+2== len)
+		{
+			m2.push_back(cout);
+		}
+	}
+
+	return m2;
+}
+int mymax(vector<int> ret)//找到重复个数的最大值；
+{
+	int max=0;
+	for (vector<int> ::iterator it = ret.begin(); it != ret.end(); it++)
+	{
+		if (max < (*it))
+		{
+			max = (*it);
+		}
+	}
+	return max;
+
+}
+void test01()
+{
+	string str1 = { "aaafkhopgaaaasdfghjklawerti" };
+	vector<int> ret=test02(str1);
+	int max=mymax(ret);
+	string s0 = "asdfghjklawerty";
+	cout<<"最大无重复子符串的个数："<<max<<endl;
+	cout<<s0.length()<<endl;
+
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,53 @@
+//求中位数的程序
+//nth_element(开始区间，第几个最大值，结束区间)；
+class suloution 
+{
+public:
+	int myMedian(vector<int>num1, vector<int>num2)
+	{
+		int i = 0;
+		if (num1.size() < num2.size())
+		{
+			 return myMedian( num2, num1);
+		}
+		else 
+		{
+			for (auto i : num2)//i属于num2；
+			{
+				num1.push_back(i);
+			}
+			int n = num1.size();
+			if (n / 2 != 0)
+			{
+				nth_element(num1.begin(), num1.begin()+n/2, num1.end());
+				return *(num1.begin() + n / 2);
+			}
+			else 
+			{
+				nth_element(num1.begin(), num1.begin() + n / 2, num1.end());
+				nth_element(num1.begin(), (num1.begin() + n / 2) - 1, num1.end());
+				return (*(num1.begin() + n / 2) + *((num1.begin() + n / 2) - 1)) / 2;
+			}
+		}
+	}
+};
+void test01()
+{
+	suloution s1;
+	int i = 0;
+	vector<int> num1 ;
+	vector<int> num2 ;
+	for (i = 0; i < 10; i++)
+	{
+		num1.push_back(i);
+		num1.push_back(i+20);
+	}
+	int ret =s1.myMedian(num1,num2);
+	cout << "合并后的数组的中位数是" << ret << endl;
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}

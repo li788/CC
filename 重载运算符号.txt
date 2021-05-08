@@ -1,0 +1,49 @@
+class student 
+{
+public:
+	int math;
+	int lane;
+	int inglish;
+public:
+	student(int a, int b, int c)
+	{
+		math = a;
+		lane=b;
+		inglish=c;
+	}
+	//重载+法.
+	student operator+(student& s)
+	{
+		student temp(0,0,0);
+		temp.math = this->math + s.math;
+		temp.lane = this->lane + s.lane;
+		temp.inglish = this->inglish + s.inglish;
+		return temp;
+	}
+	bool operator>(student& s)//提供自定义数组的比较规则.
+	{
+		if (s.math > this->math)
+		{
+			return true;
+		}
+	
+	
+	}
+};
+void test01()
+{
+	student s1(80, 90, 70);
+	student s2(60, 30, 90);
+	student s3 = s1 + s2;
+	cout << s3.lane << ""<<s3.math <<""<< s3.inglish <<""<<endl;
+	if (s1 > s2)
+	{
+		cout<<"重载>号成功"<<endl;
+	}
+}
+int main()
+{
+	test01();
+	system("pause");
+	return 0;
+}

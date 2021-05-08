@@ -1,0 +1,94 @@
+class cube 
+{
+public://定义属性；
+	void setmyl(int l) //写入长度；
+	{
+		m_l = l;
+	}
+	int getmyl()//读取长度
+	{
+		return m_l;
+	}
+	void setmyw(int w)
+	{
+		m_w = w;
+	}
+	int getmyw()
+	{
+		return m_w;
+	}
+	void setmyh(int h)
+	{
+		m_h = h;
+	}
+	int getmyh()
+	{
+		return m_h;
+	}
+	int myarea()
+	{
+		return 2 * (m_h * m_l + m_w * m_l + m_w * m_h);
+	
+	}
+	int myV()
+	{
+		return m_h * m_l * m_w;
+	}
+	bool compear(class cube& c2)
+	{
+		if (m_l == c2.getmyl() && m_w == c2.getmyw() && m_h== c2.getmyh())
+		{
+			cout<<"两个立方体相等"<<endl;
+			return true;
+		}
+		return false;
+	}
+private://定义类的属性,补全属性，其行为可以任意调动和使用；
+	int m_l;
+	int m_w;
+	int m_h;
+
+};//定义一个长方体的所有属性；
+//定义一个全局比较函数
+bool combear(class cube& c1, class cube& c2)//把变量引用过来可以很好的避免内存重复拷贝的现象
+{
+	if (c1.getmyl() == c2.getmyl() && c1.getmyw() == c2.getmyw() && c1.getmyh() == c2.getmyh())
+	{
+		return true;
+	}
+	return false;
+}
+int main()
+{
+	class cube c1;
+	c1.setmyl(20);
+	c1.setmyh(20);
+	c1.setmyw(20);
+	cout << "长方体的面积是：" << c1.myarea() << endl;
+	cout << "长方体的体积是：" << c1.myV() << endl;
+	class cube c2;
+	c2.setmyl(20);
+	c2.setmyh(20);
+	c2.setmyw(20);
+	bool ret2=c2.compear(c2);
+	if (ret2)
+	{
+		cout << "判断这两个长方体相等" << endl;
+	}
+	else
+	{
+		cout << "判断这两个长方不体相等" << endl;
+	}
+	bool ret=combear(c1, c2);
+	if (ret)
+	{
+		cout << "全局函数判断这两个长方体相等"<<endl;
+	}
+	else
+	{
+		cout << "全局函数判断这两个长方不体相等" << endl;
+	}
+
+	system("pause");
+	return 0;
+}

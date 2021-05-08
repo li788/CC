@@ -1,0 +1,83 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<iostream>
+#include<vector>//包含容器的头文件
+#include<algorithm>//包含算法的头文件；
+using namespace std;
+#include <list>
+#include<time.h>
+#include<set>
+#include<string>
+class Solution {
+public:
+    list<int>  addTwoNumbers(list<int> &l1, list<int> &l2)
+    {
+        list<int>m;
+        int m2 = 0;
+        list<int> ::iterator l_2 = l2.begin();
+       for(list<int> ::iterator l_1 = l1.begin();l_1!=l1.end();l_1++,l_2++)
+        {
+                 
+               if (((*l_1)+(*l_2)+m2) < 10)
+               {
+                   int s = (*l_1) + (*l_2)+m2;
+                   m.push_back(s);
+                   m2 = 0;
+               }
+               else
+               {
+                   int m1 = ((*l_1)+(*l_2)+m2) % 10;
+                   m2 = ((*l_1) + (*l_2) + m2) / 10;
+                   m.push_back(m1); 
+                   if (l_1 == (--l1.end()))
+                   {
+                       m.push_back(m2);
+                   }
+               }
+        }
+       return m;
+    }
+};
+void test01()
+{
+    
+    list<int>l1;
+    l1.push_back(6);
+    l1.push_back(6);
+    l1.push_back(4);
+    l1.push_back(3);
+    l1.push_back(5);
+    l1.push_back(5);
+    list<int>l2;
+    l2.push_back(5);
+    l2.push_back(6);
+    l2.push_back(4);
+    l2.push_back(5);
+    l2.push_back(5);
+    l2.push_back(8);
+    Solution s1;
+    list<int>ret = s1.addTwoNumbers(l1, l2);
+    ret.reverse();
+    cout << "[";
+    for (list<int> ::iterator rt = ret.begin(); rt != ret.end(); rt++)
+    {
+       
+        cout<< (*rt)<<"";
+        if (rt != --ret.end())
+        {
+            cout << "," << "";
+        }
+    }
+    cout << "]";
+    l1.clear();
+    l2.clear();
+    ret.clear();
+}
+
+int main()
+{
+    test01();
+   
+    system("pause");
+
+    return 0;
+}

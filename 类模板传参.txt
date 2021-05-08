@@ -1,0 +1,47 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<iostream>
+using namespace std;
+#include<string>
+template<class W,class T=int>//参数进行默认化
+class person 
+{
+public:
+    person(W myname,T myage) 
+    {
+       this->name = myname;
+        this->age = myage;
+    }
+    void print()
+    {
+        cout <<"name:"<<name<<"age"<<age<< endl;
+    }
+public:
+    W name;
+    T age;
+};
+//模板传参
+void test01(person <string, int>& p1)//类型具体化传参；
+{
+    p1.print();
+}
+template<class t1,class t2>
+void test02(person<t1,t2>&p)//半具体化传参；
+{
+    p.print();
+
+}
+template<class t>
+void test03(t & p)//半具体化传参；
+{
+    p.print();
+
+}
+int main()
+{
+    person <string, int>p1("孙误", 9999);
+    test01(p1);
+    test02(p1);
+    test03(p1);
+    system("pause");
+    return 0;
+}

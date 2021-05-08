@@ -1,0 +1,27 @@
+class stu 
+{
+	public:
+		void setname(string myname)//设置   写入
+		{
+			name = myname;
+		}
+		string getname()//读取
+		{
+			return name;
+		}
+		void print()
+		{
+			cout << name << endl;
+		}
+private:
+		string name;
+		
+};
+int main()
+{
+	stu s1;
+	s1.setname("李恒");
+	s1.print();
+	system("pause");
+	return 0;
+}
