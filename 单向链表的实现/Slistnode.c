@@ -114,8 +114,7 @@ sl* find(sl* head, mytype x)
 		{
 			printf("找到了，他的地址是：%p\n", head);
 			return head;
-		}
-		
+		}	
 	}
 	printf("抱歉没有找到\n");
 	return head;
